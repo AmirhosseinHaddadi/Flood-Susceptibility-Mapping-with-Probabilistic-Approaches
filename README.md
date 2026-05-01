@@ -118,42 +118,7 @@ All layers are automatically reprojected to a **UTM grid at 10m resolution**.
 
 ---
 
-## ⚙️ Configuration
 
-Edit the `CONFIG` dictionary in the script:
-
-```python
-CONFIG = {
-    # Paths
-    "FLOOD_MASK_TIF": r"path/to/flooded_mask.tif",
-    "AOI_SHP": r"path/to/aoi.shp",
-    "LAYERS_DIR": r"path/to/layers/",
-    
-    # Layer mapping (key: filename without extension)
-    "LAYERS": {
-        "DEM": "DEM_30m_AOI",
-        "slope": "slope",
-        "TWI": "twi_proj",
-        # ... add all layers
-    },
-    
-    # Sampling
-    "N_SAMPLES_TOTAL": 2000,      # total sample points
-    "POS_RATIO": 0.5,             # proportion flood points
-    "VALIDATION_SIZE": 0.25,      # validation split
-    
-    # Binning
-    "N_BINS_CONT": 10,            # bins for continuous layers
-    "MIN_VALID_SAMPLES_BINNING": 50,
-    
-    # Processing
-    "TARGET_RES_M": 10.0,         # output resolution
-    "BLOCK_SIZE": 512,            # tile size (pixels)
-    "SMOOTH": 0.5,                # Laplace smoothing
-    
-    # Categorical layers list
-    "CATEGORICAL_LAYERS": ["LULC", "soil_lithology"],
-}
 🚀 Usage
 1. Clone & Install
 bash
@@ -185,21 +150,36 @@ matplotlib>=3.5.0
 pyproj>=3.3.0
 shapely>=1.8.0
 openpyxl>=3.0.0
-📖 Citation
-If you use this code, please cite:
 
-text
-[Your paper details here – EGU26 presentation]
-📧 Contact
-Amir – [Your email]
-[Your affiliation]
+## 📚 Citation
 
-🙏 Acknowledgments
+If you use this code or methodology in your research, please cite:
+
+**Haddadi, A. and Safaie, A.:** Hybrid Data-Driven and Enhanced AHP Framework for Flood Susceptibility Mapping, EGU General Assembly 2026, Vienna, Austria, 3–8 May 2026, EGU26-611, https://doi.org/10.5194/egusphere-egu26-611, 2026.
+
+```bibtex
+@inproceedings{Haddadi2026Hybrid,
+  author       = {Amir Haddadi and A. Safaie},
+  title        = {Hybrid Data-Driven and Enhanced AHP Framework for Flood Susceptibility Mapping},
+  booktitle    = {EGU General Assembly 2026},
+  address      = {Vienna, Austria},
+  date         = {2026-05-03/2026-05-08},
+  year         = {2026},
+  pages        = {EGU26-611},
+  doi          = {10.5194/egusphere-egu26-611},
+}
+```
+
+## 📧 Contact
+Amir – [amir6haddadi@gmail.com]
+
+
+## 🙏 Acknowledgments
 HydroBASINS for watershed data
 
 Copernicus / USGS for open geospatial data
 
-⚠️ Notes
+## ⚠️ Notes
 Memory usage is ~O(block_size²) – adjust BLOCK_SIZE for your RAM
 
 All intermediate rasters use DEFLATE compression + tiling
